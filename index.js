@@ -57,5 +57,4 @@ app.get('/receive', (request, response) => {
   }, TIMEOUT_SECS*1000);
 });
 
-// set the server to listen on port 3000
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
