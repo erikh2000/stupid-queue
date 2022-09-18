@@ -1,0 +1,15 @@
+{
+  "name": "stupid-queue",
+  "version": "1.0.0",
+  "description": "Stupid-simple message queue.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Erik Hermansen",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.18.1"
+  }
+}
