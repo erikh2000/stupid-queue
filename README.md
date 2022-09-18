@@ -8,7 +8,7 @@ TL;DR - it was just simpler to write a message queue server from scratch. It too
 
 # Why Might You Want to Use Stupid Queue?
 
-It's small and understandable code to use as a starting point for learning or adding to. There's build-time or run-time dependencies.
+It's small and understandable code to use as a starting point for learning or adding to. There's no build-time or run-time dependencies.
 
 I'm not going to bother to publish it to NPM. Well, if you ask me to, I might.
 
@@ -21,14 +21,10 @@ I'm not going to bother to publish it to NPM. Well, if you ask me to, I might.
 
 # Installation
 
-1. Clone the source.
-`git clone git@github.com:erikh2000/stupid-queue.git`
-
-2. Install Node modules from the `stupid-queue` directory. (The one that has this file in it.)
-`npm install`
-
-3. Run it!
-`npm run`
+1. `git clone git@github.com:erikh2000/stupid-queue.git`
+2. `cd stupid-queue`
+3. `npm install`
+4. `npm run`
 
 # Usage
 
