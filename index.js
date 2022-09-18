@@ -11,12 +11,12 @@ const eventEmitter = new EventEmitter();
 
 let queue = [];
 
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.contentType('application/json');
+app.use(function(request, response, next) {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  response.setHeader('Access-Control-Allow-Credentials', true);
+  response.contentType('application/json');
   next();
 });
 
@@ -29,11 +29,11 @@ app.get('/send', (request, response) => {
     return;
   }
   eventEmitter.fire(message);
+  response.end();
 });
 
 app.get('/receive', (request, response) => {
   if (queue.length) {
-    response.status(200);
     response.end( JSON.stringify(queue));
     queue = [];
     return;
@@ -43,7 +43,6 @@ app.get('/receive', (request, response) => {
   const handler = function(event) {
     queue.push(event);
     eventEmitter.unregister(id);
-    response.status(200);
     response.end( JSON.stringify(queue));
     queue = [];
   };
@@ -52,7 +51,6 @@ app.get('/receive', (request, response) => {
   timer = setTimeout(function(){ 
     const alreadyUnregistered = !eventEmitter.unregister(id);
     if (alreadyUnregistered) return;
-    response.status(200);
     response.end('[]');
   }, TIMEOUT_SECS*1000);
 });
